@@ -1,0 +1,225 @@
+.sidebar {
+  width: 360px;
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+
+    display: grid;
+    gap: 30px;
+    grid-template-areas:
+      "search buttons"
+      "equipment type";
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 24px;
+    gap: 0;
+    grid-template-areas:
+      "search"
+      "equipment"
+      "type"
+      "buttons";
+  }
+}
+
+.label {
+  position: relative;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 400;
+  color: #6c717b;
+  grid-area: search;
+
+  @media screen and (max-width: 1439px) {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 16px;
+  }
+}
+
+.icon {
+  position: absolute;
+  top: 50px;
+  left: 20px;
+
+  @media screen and (max-width: 767px) {
+    width: 14px;
+    height: 14px;
+    top: 45px;
+  }
+}
+
+.input {
+  border-radius: 0.75rem;
+  padding-left: 48px;
+  height: 56px;
+  background-color: #f7f7f7;
+
+  @media screen and (max-width: 767px) {
+    padding-left: 40px;
+    height: 46px;
+  }
+}
+
+.equipWrap {
+  grid-area: equipment;
+  margin-bottom: 32px;
+
+  @media screen and (max-width: 1200px) {
+    margin-bottom: 40px;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 24px;
+  }
+}
+
+.title {
+  margin-bottom: 32px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #475467;
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+}
+
+.subtitle {
+  margin-bottom: 24px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
+}
+
+.checkboxWrap,
+.radioWrap {
+  padding-top: 24px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  border-top: 1px solid #dadde1;
+
+  @media screen and (max-width: 767px) {
+    padding-top: 16px;
+  }
+}
+
+.checkboxLabel,
+.radioLabel {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 112px;
+  height: 96px;
+  border: 1px solid #dadde1;
+  border-radius: 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 250ms linear,
+    opacity 250ms linear;
+
+  @media screen and (max-width: 767px) {
+    width: 82px;
+    height: 66px;
+    font-size: 12px;
+    padding: 0 12px;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.typeWrap {
+  margin-bottom: 40px;
+  grid-area: type;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 1200px) {
+    padding-top: 56px;
+  }
+
+  @media screen and (max-width: 767px) {
+    padding-top: 0;
+    margin-bottom: 32px;
+  }
+}
+
+.optionIcon {
+  @media screen and (max-width: 767px) {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.active {
+  border-color: #e44848;
+}
+
+.btnWrapper {
+  display: flex;
+  justify-content: space-between;
+  grid-area: buttons;
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 767px) {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+.btn {
+  background-color: #e44848;
+  border-radius: 12.5rem;
+  color: #fff;
+  min-width: 166px;
+  height: 56px;
+  transition: background-color 250ms linear,
+    border-color 250ms linear;
+
+  @media screen and (max-width: 767px) {
+    min-width: 126px;
+    height: 46px;
+  }
+}
+
+.btnSubmit {
+  &:hover,
+  &:focus {
+    background-color: #d84343;
+  }
+}
+
+.btnReset {
+  border: 1px solid #dadde1;
+  background-color: #fff;
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    border-color: #d84343;
+  }
+}
