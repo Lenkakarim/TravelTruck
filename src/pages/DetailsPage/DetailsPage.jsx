@@ -42,7 +42,7 @@ const DetailsPage = () => {
     <section className={css.details}>
       <nav className={css.breadcrumbs}>
         <Link to="/catalog">Catalog</Link>
-        <span> / {camper?.name || "Details"}</span>
+        <span> / {camper ? camper.name : "Details"}</span>
       </nav>
 
       <h2 className="visually-hidden">

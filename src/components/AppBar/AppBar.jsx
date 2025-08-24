@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
-import icon from "../../assets/icon/icon.svg";
+import icon from "../../../public/icon.svg";
 import css from "./AppBar.module.css";
 
 const AppBar = () => {
