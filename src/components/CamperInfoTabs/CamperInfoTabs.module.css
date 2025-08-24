@@ -1,0 +1,41 @@
+.linkList {
+  margin-bottom: 44px;
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid #dadde1;
+}
+
+@media screen and (max-width: 767px) {
+  .linkList {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    gap: 20px;
+  }
+}
+
+.link {
+  display: block;
+  padding: 24px 0;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  text-decoration: none;
+  color: #000;
+  transition: color 250ms linear, opacity 250ms linear;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+  @media screen and (max-width: 767px) {
+    padding: 16px 0;
+    font-size: 16px;
+  }
+}
+
+.activeLink {
+  text-decoration-line: underline;
+  text-decoration-color: #e44848;
+  text-decoration-thickness: 5px;
+  text-underline-offset: 28px;
+}

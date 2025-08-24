@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 import styles from "./NotFoundPage.module.css";
-// import notFoundImg from "../assets/404.png";
+import notfaund from "../../assets/notfaund.jpg";
 
 export default function NotFound() {
   return (
     <main className={styles.wrapper}>
-      {/* <img
-        src={notFoundImg}
-        alt="404: Страница не найдена — дом на колёсах в кемпинге"
+      <img
+        src={notfaund}
+        alt="404: Page Not Found - Campervan"
         className={styles.image}
-      /> */}
+      />
 
       <h1 className={styles.title}>Oops! Page not found</h1>
       <p className={styles.text}>

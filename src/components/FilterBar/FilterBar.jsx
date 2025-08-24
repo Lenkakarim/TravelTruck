@@ -1,203 +1,196 @@
-// import { Field, Form, Formik } from "formik";
-// import css from "./FilterBar.module.css";
-// import Icon from "../../assets/icon/icon.svg";
-
-// const FilterBar = () => {
-//   const initialValues = {
-//     location: "",
-//     vehicleType: "",
-//     equipment: [],
-//   };
-
-//   const equipmentOptions = [
-//     "AC",
-//     "Automatic",
-//     "Kitchen",
-//     "TV",
-//     "Bathroom",
-//   ];
-//   const vehicleTypes = [
-//     "Van",
-//     "Fully Integrated",
-//     "Alcove",
-//   ];
-
-//   return (
-//     <Formik initialValues={initialValues}>
-//       <Form>
-//         <aside className={css.sidebar}>
-//           <label className={css.label}>
-//             Location
-//             <Icon
-//               className={css.icon}
-//               id="icon-Map"
-//               w={20}
-//               h={20}
-//             />
-//             <Field
-//               className={css.input}
-//               name="location"
-//               placeholder="City"
-//             />
-//           </label>
-
-//           <h2 className={css.title}>Filters</h2>
-//           <h3 className={css.subtitle}>
-//             Vehicle equipment
-//           </h3>
-
-//           <div className={css.checkboxWrap}>
-//             {equipmentOptions.map((option) => (
-//               <label
-//                 key={option}
-//                 className={css.checkboxLabel}
-//               >
-//                 <Field
-//                   type="checkbox"
-//                   name="equipment"
-//                   value={option}
-//                   hidden
-//                 />
-//                 <Icon
-//                   id={option.toLowerCase()}
-//                   w={32}
-//                   h={32}
-//                 />
-//                 {option}
-//               </label>
-//             ))}
-//           </div>
-
-//           <h3 className={css.subtitle}>Vehicle type</h3>
-
-//           <div className={css.radioWrap}>
-//             {vehicleTypes.map((type) => (
-//               <label key={type} className={css.radioLabel}>
-//                 <Field
-//                   type="radio"
-//                   name="vehicleType"
-//                   value={type}
-//                   hidden
-//                 />
-//                 <Icon
-//                   id={type.toLowerCase()}
-//                   w={32}
-//                   h={32}
-//                 />
-//                 {type}
-//               </label>
-//             ))}
-//           </div>
-
-//           <button className={css.btn} type="submit">
-//             Search
-//           </button>
-//         </aside>
-//       </Form>
-//     </Formik>
-//   );
-// };
-
-// export default FilterBar;
+import React from "react";
 import { Field, Form, Formik } from "formik";
 import css from "./FilterBar.module.css";
-import Icon from "../Icon/Icon"; // наш компонент
+import Icon from "../Icon/Icon";
+import { useAppDispatch } from "../../redux/hooks";
+import {
+  setParams,
+  setCurrentPage,
+} from "../../redux/campers/slice";
 
-const FilterBar = ({ onFilter }) => {
+const FilterBar = () => {
+  const dispatch = useAppDispatch();
+
   const initialValues = {
     location: "",
-    vehicleType: "",
     equipment: [],
+    form: "",
   };
 
-  const equipmentOptions = [
-    { name: "AC", icon: "icon-wind" },
-    { name: "Automatic", icon: "icon-automatic" },
-    { name: "Kitchen", icon: "icon-cup-hot" },
-    { name: "TV", icon: "icon-TV" },
-    { name: "Bathroom", icon: "icon-shower" },
-  ];
+  const handleSubmit = (values) => {
+    const params = new URLSearchParams();
 
-  const vehicleTypes = [
-    { name: "Van", icon: "icon-bi_grid-1x2" },
-    { name: "Fully Integrated", icon: "icon-bi_grid" },
-    { name: "Alcove", icon: "icon-bi_grid-3x3" },
-  ];
+    if (values.equipment.length) {
+      values.equipment.forEach((item) => {
+        if (item === "automatic") {
+          params.append("transmission", item);
+        } else {
+          params.append(item, "true");
+        }
+      });
+    }
+
+    if (values.form) {
+      params.append("form", values.form);
+    }
+
+    if (values.location) {
+      params.append(
+        "location",
+        values.location.split(", ")[0]
+      );
+    }
+
+    const queryString = params.toString();
+    dispatch(setParams(queryString));
+    dispatch(setCurrentPage(1));
+  };
+
+  const handleReset = () => {
+    dispatch(setParams(""));
+    dispatch(setCurrentPage(1));
+  };
 
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values) => {
-        if (onFilter) {
-          onFilter(values);
-        }
-        console.log("Фильтры:", values);
-      }}
+      onSubmit={handleSubmit}
     >
-      <Form>
-        <aside className={css.sidebar}>
-          <label className={css.label}>
-            Location
-            <Icon
-              id="icon-Map"
-              size={20}
-              className={css.icon}
-            />
-            <Field
-              className={css.input}
-              name="location"
-              placeholder="City"
-            />
-          </label>
+      {({ values, resetForm }) => (
+        <Form>
+          <aside className={css.sidebar}>
+            <label className={css.label}>
+              Location
+              <Icon
+                className={css.icon}
+                id="icon-Map"
+                w={20}
+                h={20}
+              />
+              <Field
+                className={css.input}
+                type="text"
+                name="location"
+                placeholder="City"
+                autoComplete="off"
+              />
+            </label>
 
-          <h2 className={css.title}>Filters</h2>
-          <h3 className={css.subtitle}>
-            Vehicle equipment
-          </h3>
+            <div className={css.equipWrap}>
+              <h2 className={css.title}>Filters</h2>
+              <h3 className={css.subtitle}>
+                Vehicle equipment
+              </h3>
+              <div className={css.checkboxWrap}>
+                {[
+                  { name: "AC", icon: "icon-wind" },
+                  {
+                    name: "automatic",
+                    icon: "icon-automatic",
+                  },
+                  { name: "kitchen", icon: "icon-cup-hot" },
+                  { name: "TV", icon: "icon-TV" },
+                  { name: "bathroom", icon: "icon-shower" },
+                ].map((option) => (
+                  <label
+                    key={option.name}
+                    className={
+                      values.equipment.includes(option.name)
+                        ? `${css.checkboxLabel} ${css.active}`
+                        : css.checkboxLabel
+                    }
+                  >
+                    <Field
+                      className="visually-hidden"
+                      type="checkbox"
+                      name="equipment"
+                      value={option.name}
+                    />
+                    <Icon
+                      className={css.optionIcon}
+                      id={option.icon}
+                      w={32}
+                      h={32}
+                    />
+                    {option.name === "automatic"
+                      ? "Automatic"
+                      : option.name
+                          .charAt(0)
+                          .toUpperCase() +
+                        option.name.slice(1)}
+                  </label>
+                ))}
+              </div>
+            </div>
 
-          <div className={css.checkboxWrap}>
-            {equipmentOptions.map((option) => (
-              <label
-                key={option.name}
-                className={css.checkboxLabel}
+            <div className={css.typeWrap}>
+              <h3 className={css.subtitle}>Vehicle type</h3>
+              <div className={css.radioWrap}>
+                {[
+                  {
+                    name: "panelTruck",
+                    label: "Van",
+                    icon: "icon-bi_grid-1x2",
+                  },
+                  {
+                    name: "fullyIntegrated",
+                    label: "Fully Integrated",
+                    icon: "icon-bi_grid",
+                  },
+                  {
+                    name: "alcove",
+                    label: "Alcove",
+                    icon: "icon-bi_grid-3x3",
+                  },
+                ].map((type) => (
+                  <label
+                    key={type.name}
+                    className={
+                      values.form === type.name
+                        ? `${css.checkboxLabel} ${css.active}`
+                        : css.checkboxLabel
+                    }
+                  >
+                    <Field
+                      className="visually-hidden"
+                      type="radio"
+                      name="form"
+                      value={type.name}
+                    />
+                    <Icon
+                      className={css.optionIcon}
+                      id={type.icon}
+                      w={32}
+                      h={32}
+                    />
+                    {type.label}
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div className={css.btnWrapper}>
+              <button
+                className={`${css.btn} ${css.btnSubmit}`}
+                type="submit"
               >
-                <Field
-                  type="checkbox"
-                  name="equipment"
-                  value={option.name}
-                  hidden
-                />
-                <Icon id={option.icon} size={32} />
-                {option.name}
-              </label>
-            ))}
-          </div>
-
-          <h3 className={css.subtitle}>Vehicle type</h3>
-
-          <div className={css.radioWrap}>
-            {vehicleTypes.map((type) => (
-              <label
-                key={type.name}
-                className={css.radioLabel}
+                Search
+              </button>
+              <button
+                className={`${css.btn} ${css.btnReset}`}
+                type="button"
+                onClick={() => {
+                  resetForm();
+                  handleReset();
+                  document.activeElement.blur();
+                }}
               >
-                <Field
-                  type="radio"
-                  name="vehicleType"
-                  value={type.name}
-                  hidden
-                />
-                <Icon id={type.icon} size={32} />
-                {type.name}
-              </label>
-            ))}
-          </div>
-
-          <button className={css.btn} type="submit">
-            Search
-          </button>
-        </aside>
-      </Form>
+                Reset
+              </button>
+            </div>
+          </aside>
+        </Form>
+      )}
     </Formik>
   );
 };

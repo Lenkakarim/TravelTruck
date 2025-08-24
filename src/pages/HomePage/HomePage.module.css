@@ -52,20 +52,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12.5rem;
+  border-radius: 200px;
   width: 173px;
   height: 56px;
   color: #fff;
   background-color: #e44848;
-  transition: background-color 250ms linear;
-
-  @media screen and (max-width: 767px) {
-    width: 133px;
-    height: 46px;
-  }
+  transition: background-color 250ms linear,
+    transform 250ms ease;
 
   &:hover,
   &:focus {
     background-color: #d84343;
+    transform: scale(1.05);
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 133px;
+    height: 46px;
   }
 }

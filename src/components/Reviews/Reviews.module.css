@@ -1,0 +1,63 @@
+.reviewsItem:not(:last-child) {
+  margin-bottom: 44px;
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 20px;
+  }
+}
+
+.wrapperTop {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @media screen and (max-width: 767px) {
+    text-underline-offset: 20px;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  background-color: #f2f4f7;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  color: #e44848;
+
+  @media screen and (max-width: 767px) {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.name {
+  margin-bottom: 4px;
+  font-weight: 600;
+  font-size: 16px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+  }
+}
+
+.star {
+  fill: #f2f4f7;
+}
+
+.yellow {
+  fill: #ffc531;
+}
+
+.text {
+  font-weight: 400;
+  color: #475467;
+  max-width: 595px;
+}

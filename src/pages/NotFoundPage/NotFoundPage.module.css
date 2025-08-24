@@ -4,36 +4,36 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #fff8eb; /* тёплый беж */
+  background-color: #fff8eb;
   padding: 24px;
   text-align: center;
 }
-
 .image {
   max-width: 600px;
   width: 100%;
   height: auto;
   margin-bottom: 32px;
-
-  /* 🚐 анимация покачивания */
-  animation: camperSwing 3s ease-in-out infinite;
+  border-radius: 16px;
+  animation: slideInFromLeft 1.2s ease-out forwards;
+  transform: translateX(-100%);
+  opacity: 0;
 }
 
-@keyframes camperSwing {
+@keyframes slideInFromLeft {
   0% {
-    transform: rotate(0deg);
+    transform: translateX(-100%);
+    opacity: 0;
   }
-  25% {
-    transform: rotate(1deg);
+  60% {
+    transform: translateX(10%);
+    opacity: 1;
   }
-  50% {
-    transform: rotate(0deg);
-  }
-  75% {
-    transform: rotate(-1deg);
+  80% {
+    transform: translateX(-5%);
   }
   100% {
-    transform: rotate(0deg);
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
@@ -61,9 +61,9 @@
   transition: background-color 0.2s ease,
     transform 0.2s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
 
-.button:hover {
-  background-color: #d84343;
-  transform: translateY(-2px);
+  &:hover {
+    background-color: #d84343;
+    transform: translateY(-2px);
+  }
 }

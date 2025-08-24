@@ -1,0 +1,21 @@
+.btn {
+  display: block;
+  margin: 40px auto 0;
+  min-width: 145px;
+  height: 56px;
+  border: 1px solid #dadde1;
+  border-radius: 12.5rem;
+  background-color: #fff;
+  transition: border-color 250ms linear;
+
+  @media screen and (max-width: 767px) {
+    margin-top: 24px;
+    min-width: 126px;
+    height: 46px;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: #d84343;
+  }
+}

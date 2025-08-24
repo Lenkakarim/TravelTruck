@@ -1,0 +1,171 @@
+.item {
+  display: flex;
+  gap: 24px;
+  border: 1px solid #dadde1;
+  border-radius: 20px;
+  padding: 24px;
+  min-height: 368px;
+
+  @media screen and (max-width: 1439px) {
+    display: block;
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 16px;
+  }
+}
+
+.image {
+  border-radius: 10px;
+
+  @media screen and (max-width: 1439px) {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 16px;
+    height: 240px;
+  }
+}
+
+.rightWrap {
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: column;
+}
+
+.wrapperTop {
+  margin-bottom: 8px;
+  min-height: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.topInnerWrap {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  @media screen and (max-width: 767px) {
+    gap: 6px;
+  }
+}
+
+.model,
+.price {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+  }
+}
+
+.model {
+  max-width: 350px;
+}
+
+.middleWrap {
+  margin-bottom: 24px;
+  display: flex;
+  gap: 16px;
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 16px;
+    justify-content: space-between;
+  }
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 400;
+}
+
+.ratingLink {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 400;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.star {
+  fill: #ffc531;
+}
+
+.description {
+  margin-bottom: 24px;
+  max-width: 463px;
+  font-weight: 400;
+  color: #475467;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media screen and (max-width: 1439px) {
+    max-width: 590px;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 16px;
+    max-width: 220px;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12.5rem;
+  width: 166px;
+  height: 56px;
+  color: #fff;
+  background-color: #e44848;
+  transition: background-color 250ms linear,
+    transform 250ms ease;
+
+  @media screen and (max-width: 1439px) {
+    margin: 0 auto;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 126px;
+    height: 46px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #d84343;
+    transform: scale(1.05);
+  }
+}
+
+.btnIcon {
+  transition: opacity 250ms linear;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+}
+
+.iconHeart {
+  @media screen and (max-width: 767px) {
+    width: 20px;
+    height: 18px;
+  }
+}
+
+.isActive {
+  fill: #e44848;
+
+  @media screen and (max-width: 767px) {
+    width: 20px;
+    height: 18px;
+  }
+}

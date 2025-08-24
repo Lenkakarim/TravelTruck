@@ -1,0 +1,36 @@
+.details {
+  padding: 48px 64px 80px;
+
+  @media screen and (max-width: 767px) {
+    padding: 38px 50px 42px;
+  }
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(450px, 1fr)
+  );
+  gap: 40px;
+
+  @media screen and (max-width: 767px) {
+    gap: 30px;
+    grid-template-columns: 1fr;
+  }
+}
+.breadcrumbs {
+  font-size: 14px;
+  color: #475467;
+  margin-bottom: 16px;
+}
+
+.breadcrumbs a {
+  color: #475467;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+  color: #e44848;
+}

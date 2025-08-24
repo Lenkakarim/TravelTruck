@@ -1,0 +1,145 @@
+:global(.react-datepicker-wrapper) {
+  display: block;
+  width: 100%;
+}
+
+.formWrap {
+  border: 1px solid #dadde1;
+  border-radius: 12px;
+  padding: 44px 57px;
+
+  @media screen and (max-width: 767px) {
+    padding: 24px;
+  }
+}
+
+.title {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+  }
+}
+
+.text {
+  margin-bottom: 24px;
+  font-weight: 400;
+  color: #6c717b;
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 16px;
+  }
+}
+
+.form {
+  text-align: center;
+}
+
+.label {
+  margin-bottom: 14px;
+  display: block;
+  position: relative;
+
+  &:last-child {
+    margin-bottom: 24px;
+  }
+}
+
+.input {
+  border-radius: 12px;
+  padding: 0 18px;
+  height: 60px;
+  width: 100%;
+  background: #f7f7f7;
+
+  @media screen and (max-width: 767px) {
+    height: 50px;
+    padding: 0 12px;
+  }
+}
+
+.textarea {
+  padding: 18px;
+  height: 118px;
+  resize: none;
+
+  @media screen and (max-width: 767px) {
+    padding: 12px;
+    height: 98px;
+  }
+}
+
+.error {
+  color: #e44848;
+  font-size: 14px;
+  text-align: left;
+  min-height: 18px;
+  margin-top: 4px;
+  visibility: visible;
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+}
+
+.button {
+  border-radius: 200px;
+  min-width: 166px;
+  height: 56px;
+  background-color: #e44848;
+  color: #fff;
+  transition: background-color 250ms linear;
+
+  @media screen and (max-width: 767px) {
+    min-width: 126px;
+    height: 46px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #d84343;
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.modal h2 {
+  margin-bottom: 16px;
+}
+
+.modal p {
+  margin-bottom: 24px;
+}
+
+.modal .button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 200px;
+  background-color: #d84343;
+  color: white;
+  cursor: pointer;
+}

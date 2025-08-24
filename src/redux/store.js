@@ -1,43 +1,49 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { combineReducers } from "redux";
-import { createSlice } from "@reduxjs/toolkit";
+import campersReducer from "./campers/slice";
+import favoritesReducer from "./favorites/slice";
+import scrollReducer from "./scrollUp/slice";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-const initialState = {
-  campers: [],
-  filters: {},
-  favorites: [],
+const persistConfig = {
+  key: "favorites",
+  version: 1,
+  storage,
 };
 
-const camperSlice = createSlice({
-  name: "campers",
-  initialState,
-  reducers: {
-    setCampers(state, action) {
-      state.campers = action.payload;
-    },
-    setFilters(state, action) {
-      state.filters = action.payload;
-    },
-    addFavorite(state, action) {
-      state.favorites.push(action.payload);
-    },
-    removeFavorite(state, action) {
-      state.favorites = state.favorites.filter(
-        (favorite) => favorite.id !== action.payload.id
-      );
-    },
+const persistedFavoritesReducer = persistReducer(
+  persistConfig,
+  favoritesReducer
+);
+
+export const store = configureStore({
+  reducer: {
+    campers: campersReducer,
+    favorites: persistedFavoritesReducer,
+    scroll: scrollReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [
+          FLUSH,
+          REHYDRATE,
+          PAUSE,
+          PERSIST,
+          PURGE,
+          REGISTER,
+        ],
+      },
+    }),
 });
 
-export const {
-  setCampers,
-  setFilters,
-  addFavorite,
-  removeFavorite,
-} = camperSlice.actions;
-
-export default configureStore({
-  reducer: combineReducers({
-    campers: camperSlice.reducer,
-  }),
-});
+export const persistor = persistStore(store);

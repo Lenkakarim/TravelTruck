@@ -1,0 +1,9 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+
+  @media screen and (max-width: 767px) {
+    row-gap: 16px;
+  }
+}
