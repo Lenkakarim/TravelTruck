@@ -1,62 +1,60 @@
-🚐 TravelTrucks
+# 🚐 TravelTrucks
 
 TravelTrucks is a frontend web application for a camper rental company.
 It allows users to browse, filter, and book campers easily, with an interactive UI.
 
-✨ Features
+## ✨ Features
 
-🔎 Browse catalog of available campers with filtering by location, equipment, and vehicle type.
+### 🔎 Browse catalog of available campers with filtering by location, equipment, and vehicle type.
 
-📄 Detailed camper page with specifications, image gallery, user reviews, and booking form.
+### 📄 Detailed camper page with specifications, image gallery, user reviews, and booking form.
 
-❤️ Favorites list to save campers for later.
+### 📝 Booking form with confirmation modal upon successful submission.
 
-📝 Booking form with confirmation modal upon successful submission.
+### 💬 React Modal integration for:
 
-💬 React Modal integration for:
+#### -Viewing camper images in a lightbox-style modal.
 
-Viewing camper images in a lightbox-style modal.
+#### -Displaying a modal notification after the booking form is successfully submitted.
 
-Displaying a modal notification after the booking form is successfully submitted.
+## 🛠️ Tech Stack
 
-🛠️ Tech Stack
+### React — component-based UI
 
-React — component-based UI
+### Vite — fast development and bundling
 
-Vite — fast development and bundling
+### Redux Toolkit — state management
 
-Redux Toolkit — state management
+### React Router — routing and nested pages
 
-React Router — routing and nested pages
+### Axios — HTTP requests
 
-Axios — HTTP requests
+### CSS Modules — scoped styling
 
-CSS Modules — scoped styling
+### React Modal — for image galleries and form notifications
 
-React Modal — for image galleries and form notifications
+## 🚀 Deployment
 
-🚀 Deployment
+[Project deployed on Vercel](https://travel-truck-mauve.vercel.app/)
 
-The project is deployed on
+## ⚙️ Installation & Setup
 
-⚙️ Installation & Setup
-
-Clone the repository:
+### Clone the repository:
 
 git clone https://github.com/Lenkakarim/TravelTruck
 cd traveltrucks
 
-Install dependencies:
+### Install dependencies:
 
 npm install
 
-Start the development server:
+### Start the development server:
 
 npm run dev
 
-Access the app at: http://localhost:5173
+### Access the app at: http://localhost:5173
 
-📖 How to Use
+## 📖 How to Use
 
 Visit the Home Page for a quick overview.
 
@@ -68,10 +66,10 @@ Click images to view them in a modal gallery.
 
 Fill out the booking form to see a confirmation modal.
 
-📬 Contacts
+## 📬 Contacts
 
-👤 Author: Olena Karimova
+### 👤 Author: Olena Karimova
 
-Email: ok_frontend_developer@yahoo.com
+### Email: ok_frontend_developer@yahoo.com
 
-GitHub: https://github.com/Lenkakarim
+### GitHub: https://github.com/Lenkakarim
